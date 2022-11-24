@@ -940,6 +940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567c7c2d52c43ab44934ff7591778423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPool: {fileID: 953198029}
 --- !u!4 &795560206
 Transform:
   m_ObjectHideFlags: 0

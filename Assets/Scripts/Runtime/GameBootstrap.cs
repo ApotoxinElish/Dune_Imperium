@@ -20,5 +20,11 @@ public class GameBootstrap : MonoBehaviour
         mainCamera = Camera.main;
 
         cardPool.Initialize();
+        CreatePlayer(characterTemplate);
+    }
+
+    private void InitializeGame()
+    {
+
     }
 }
