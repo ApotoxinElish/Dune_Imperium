@@ -1,18 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEngine.AddressableAssets;
+using UnityEngine.Assertions;
+
+using Random = UnityEngine.Random;
 
 public class GameBootstrap : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Pools")]
+    [SerializeField]
+    private ObjectPool cardPool;
+
+    private Camera mainCamera;
+
+    private void Start()
     {
+        mainCamera = Camera.main;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        cardPool.Initialize();
     }
 }
