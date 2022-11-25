@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class GameEventIntListener : MonoBehaviour
+namespace Dune
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameEventIntListener : MonoBehaviour
     {
-        
-    }
+        [Tooltip("Event to register with.")]
+        public GameEventInt Event;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [Tooltip("Response to invoke when Event is raised.")]
+        public UnityEvent<int> Response;
+
+        private void OnEnable()
+        {
+            Event.RegisterListener(this);
+        }
+
+        private void OnDisable()
+        {
+            Event.UnregisterListener(this);
+        }
+
+        public void OnEventRaised(int value)
+        {
+            Response.Invoke(value);
+        }
     }
 }
