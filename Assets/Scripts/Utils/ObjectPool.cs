@@ -2,77 +2,80 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class ObjectPool : MonoBehaviour
+namespace Dune
 {
-    public GameObject Prefab;
-    public int InitialSize;
-
-    private readonly Stack<GameObject> instances = new Stack<GameObject>();
-    private readonly List<GameObject> objectsToReturn = new List<GameObject>();
-
-    private readonly List<PooledObject> childrenComponents = new List<PooledObject>(32);
-
-    private void Awake()
+    public class ObjectPool : MonoBehaviour
     {
-        Assert.IsNotNull(Prefab);
-    }
+        public GameObject Prefab;
+        public int InitialSize;
 
-    public void Initialize()
-    {
-        for (var i = 0; i < InitialSize; i++)
+        private readonly Stack<GameObject> instances = new Stack<GameObject>();
+        private readonly List<GameObject> objectsToReturn = new List<GameObject>();
+
+        private readonly List<PooledObject> childrenComponents = new List<PooledObject>(32);
+
+        private void Awake()
         {
-            var obj = CreateInstance();
+            Assert.IsNotNull(Prefab);
+        }
+
+        public void Initialize()
+        {
+            for (var i = 0; i < InitialSize; i++)
+            {
+                var obj = CreateInstance();
+                obj.SetActive(false);
+                instances.Push(obj);
+            }
+        }
+
+        public GameObject GetObject()
+        {
+            var obj = instances.Count > 0 ? instances.Pop() : CreateInstance();
+            obj.SetActive(true);
+            return obj;
+        }
+
+        public void ReturnObject(GameObject obj)
+        {
+            var pooledObject = obj.GetComponent<PooledObject>();
+            Assert.IsNotNull(pooledObject);
+            Assert.IsTrue(pooledObject.Pool == this);
+
             obj.SetActive(false);
-            instances.Push(obj);
+            if (!instances.Contains(obj))
+            {
+                instances.Push(obj);
+            }
         }
-    }
 
-    public GameObject GetObject()
-    {
-        var obj = instances.Count > 0 ? instances.Pop() : CreateInstance();
-        obj.SetActive(true);
-        return obj;
-    }
-
-    public void ReturnObject(GameObject obj)
-    {
-        var pooledObject = obj.GetComponent<PooledObject>();
-        Assert.IsNotNull(pooledObject);
-        Assert.IsTrue(pooledObject.Pool == this);
-
-        obj.SetActive(false);
-        if (!instances.Contains(obj))
+        public void Reset()
         {
-            instances.Push(obj);
+            objectsToReturn.Clear();
+
+            transform.GetComponentsInChildren(false, childrenComponents);
+            foreach (var obj in childrenComponents)
+            {
+                objectsToReturn.Add(obj.gameObject);
+            }
+
+            foreach (var instance in objectsToReturn)
+            {
+                ReturnObject(instance);
+            }
         }
-    }
 
-    public void Reset()
-    {
-        objectsToReturn.Clear();
-
-        transform.GetComponentsInChildren(false, childrenComponents);
-        foreach (var obj in childrenComponents)
+        private GameObject CreateInstance()
         {
-            objectsToReturn.Add(obj.gameObject);
-        }
-
-        foreach (var instance in objectsToReturn)
-        {
-            ReturnObject(instance);
+            var obj = Instantiate(Prefab, transform, true);
+            var pooledObject = obj.AddComponent<PooledObject>();
+            pooledObject.Pool = this;
+            return obj;
         }
     }
 
-    private GameObject CreateInstance()
+    public class PooledObject : MonoBehaviour
     {
-        var obj = Instantiate(Prefab, transform, true);
-        var pooledObject = obj.AddComponent<PooledObject>();
-        pooledObject.Pool = this;
-        return obj;
+        public ObjectPool Pool;
     }
-}
-
-public class PooledObject : MonoBehaviour
-{
-    public ObjectPool Pool;
 }
