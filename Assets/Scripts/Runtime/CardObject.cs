@@ -112,6 +112,11 @@ namespace Dune
             return glow.enabled;
         }
 
+        public void OnManaChanged(int mana)
+        {
+            SetGlowEnabled(Template.Cost <= mana);
+        }
+
         public void SetState(CardState state)
         {
             currState = state;
