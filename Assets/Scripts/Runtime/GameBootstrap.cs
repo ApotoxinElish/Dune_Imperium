@@ -20,6 +20,9 @@ namespace Dune
         private List<CardTemplate> playerDeck = new List<CardTemplate>();
 
         private GameObject player;
+        private List<GameObject> enemies = new List<GameObject>();
+
+        // private GameInfo gameInfo;
 
         private void Start()
         {
