@@ -5,26 +5,39 @@ using UnityEngine.Assertions;
 
 using Random = UnityEngine.Random;
 
-public class GameBootstrap : MonoBehaviour
+namespace Dune
 {
+    public class GameBootstrap : MonoBehaviour
+    {
 #pragma warning disable 649
-    [Header("Pools")]
-    [SerializeField]
-    private ObjectPool cardPool;
+        [Header("Pools")]
+        [SerializeField]
+        private ObjectPool cardPool;
 #pragma warning restore 649
 
-    private Camera mainCamera;
+        private Camera mainCamera;
 
-    private void Start()
-    {
-        mainCamera = Camera.main;
+        private List<CardTemplate> playerDeck = new List<CardTemplate>();
 
-        cardPool.Initialize();
-        CreatePlayer(characterTemplate);
-    }
+        private GameObject player;
 
-    private void InitializeGame()
-    {
+        private void Start()
+        {
+            mainCamera = Camera.main;
 
+            cardPool.Initialize();
+
+            // CreatePlayer(characterTemplate);
+        }
+
+        // private void CreatePlayer(AssetReference templateRef)
+        // {
+        //     InitializeGame();
+        // }
+
+        private void InitializeGame()
+        {
+
+        }
     }
 }
