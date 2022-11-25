@@ -65,7 +65,7 @@ namespace Dune
         private void Awake()
         {
             sortingGroup = GetComponent<SortingGroup>();
-            // SetGlowEnabled(false);
+            SetGlowEnabled(false);
         }
 
         private void Start()
@@ -77,24 +77,54 @@ namespace Dune
 
         private void OnEnable()
         {
-            // SetState(CardState.InHand);
+            SetState(CardState.InHand);
         }
 
         public void SetInfo(RuntimeCard card)
         {
             RuntimeCard = card;
             Template = card.Template;
-            costText.text = Template.Cost.ToString();
-            nameText.text = Template.Name;
-            typeText.text = "Spell";
-            var builder = new StringBuilder();
-            foreach (var effect in Template.Effects)
-            {
-                builder.AppendFormat("{0}. ", effect.GetName());
-            }
-            descriptionText.text = builder.ToString();
-            picture.material = Template.Material;
+            // costText.text = Template.Cost.ToString();
+            // nameText.text = Template.Name;
+            // typeText.text = "Spell";
+            // var builder = new StringBuilder();
+            // foreach (var effect in Template.Effects)
+            // {
+            //     builder.AppendFormat("{0}. ", effect.GetName());
+            // }
+            // descriptionText.text = builder.ToString();
+            // picture.material = Template.Material;
             picture.sprite = Template.Picture;
+        }
+
+        public void SetGlowEnabled(bool glowEnabled)
+        {
+            glow.enabled = glowEnabled;
+        }
+
+        public void SetGlowEnabled(int playerMana)
+        {
+            glow.enabled = playerMana >= Template.Cost;
+        }
+
+        public bool IsGlowEnabled()
+        {
+            return glow.enabled;
+        }
+
+        public void SetState(CardState state)
+        {
+            currState = state;
+            switch (currState)
+            {
+                case CardState.InHand:
+                    glow.color = inHandColor;
+                    break;
+
+                case CardState.AboutToBePlayed:
+                    glow.color = aboutToBePlayedColor;
+                    break;
+            }
         }
     }
 }
