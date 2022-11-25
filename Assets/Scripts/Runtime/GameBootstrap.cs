@@ -7,6 +7,13 @@ using Random = UnityEngine.Random;
 
 namespace Dune
 {
+    /// <summary>
+    /// This component is responsible for bootstrapping the game/battle scene. This process
+    /// mainly consists on:
+    ///     - Creating the player character and the associated UI widgets.
+    ///     - Creating the enemy character/s and the associated UI widgets.
+    ///     - Starting the turn sequence.
+    /// </summary>
     public class GameBootstrap : MonoBehaviour
     {
 #pragma warning disable 649

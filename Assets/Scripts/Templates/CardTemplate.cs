@@ -18,6 +18,6 @@ namespace Dune
         public Sprite Picture;
         public CardType Type;
         public CardTemplate Upgrade;
-        // public List<Effect> Effects = new List<Effect>();
+        public List<Effect> Effects = new List<Effect>();
     }
 }
