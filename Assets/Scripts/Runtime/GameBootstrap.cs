@@ -17,6 +17,30 @@ namespace Dune
     public class GameBootstrap : MonoBehaviour
     {
 #pragma warning disable 649
+        [Header("Configuration")]
+        [SerializeField]
+        private PlayableCharacterConfiguration playerConfig;
+
+        [Header("Systems")]
+        [SerializeField]
+        private DeckDrawingSystem deckDrawingSystem;
+        [SerializeField]
+        private HandPresentationSystem handPresentationSystem;
+        [SerializeField]
+        private TurnManagementSystem turnManagementSystem;
+        [SerializeField]
+        private EffectResolutionSystem effectResolutionSystem;
+
+        // [Header("Character pivots")]
+
+        [Header("UI")]
+        [SerializeField]
+        private Canvas canvas;
+        [SerializeField]
+        private DeckWidget deckWidget;
+        [SerializeField]
+        private DiscardPileWidget discardPileWidget;
+
         [Header("Pools")]
         [SerializeField]
         private ObjectPool cardPool;
@@ -37,17 +61,23 @@ namespace Dune
 
             cardPool.Initialize();
 
-            // CreatePlayer(characterTemplate);
+            CreatePlayer();
         }
 
-        // private void CreatePlayer(AssetReference templateRef)
-        // {
-        //     InitializeGame();
-        // }
+        private void CreatePlayer()
+        {
+            InitializeGame();
+        }
 
         private void InitializeGame()
         {
+            deckDrawingSystem.Initialize(deckWidget, discardPileWidget);
+            var deckSize = deckDrawingSystem.LoadDeck(playerDeck);
+            deckDrawingSystem.ShuffleDeck();
 
+            handPresentationSystem.Initialize(cardPool, deckWidget, discardPileWidget);
+
+            turnManagementSystem.BeginGame();
         }
     }
 }

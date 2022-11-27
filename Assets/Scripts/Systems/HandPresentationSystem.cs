@@ -1,18 +1,22 @@
-using System.Collections;
+// using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-public class HandPresentationSystem : MonoBehaviour
+namespace Dune
 {
-    // Start is called before the first frame update
-    void Start()
+    public class HandPresentationSystem : MonoBehaviour
     {
-        
-    }
+        private bool isAnimating;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void Initialize(ObjectPool pool, DeckWidget deck, DiscardPileWidget discardPile)
+        {
+
+        }
+
+        public bool IsAnimating()
+        {
+            return isAnimating;
+        }
     }
 }

@@ -1073,6 +1073,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567c7c2d52c43ab44934ff7591778423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deckDrawingSystem: {fileID: 0}
+  canvas: {fileID: 1481548428}
+  deckWidget: {fileID: 2040472127}
+  discardPileWidget: {fileID: 212456241}
   cardPool: {fileID: 953198029}
 --- !u!4 &795560206
 Transform:
@@ -1371,7 +1375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 8776273054620808956, guid: 43736309faf94134da515a06bd252682, type: 3}
-  InitialSize: 16
+  InitialSize: 10
 --- !u!1 &1210672611
 GameObject:
   m_ObjectHideFlags: 0
