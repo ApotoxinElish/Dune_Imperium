@@ -265,6 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 112093171}
+  - component: {fileID: 112093172}
   m_Layer: 0
   m_Name: DeckDrawingSystem
   m_TagString: Untagged
@@ -287,6 +288,18 @@ Transform:
   m_Father: {fileID: 664406213}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112093172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112093170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467524de0a38ea44393f8a3b1b7af064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &212456239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,6 +1035,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 709883498}
+  - component: {fileID: 709883499}
   m_Layer: 0
   m_Name: EffectResolutionSystem
   m_TagString: Untagged
@@ -1044,6 +1058,18 @@ Transform:
   m_Father: {fileID: 664406213}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &709883499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709883497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fdcfbc35784fd84d849053f7c966503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &795560204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,7 +1099,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567c7c2d52c43ab44934ff7591778423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deckDrawingSystem: {fileID: 0}
+  playerConfig: {fileID: 0}
+  deckDrawingSystem: {fileID: 112093172}
+  handPresentationSystem: {fileID: 1938583160}
+  turnManagementSystem: {fileID: 1401370098}
+  effectResolutionSystem: {fileID: 709883499}
   canvas: {fileID: 1481548428}
   deckWidget: {fileID: 2040472127}
   discardPileWidget: {fileID: 212456241}
@@ -1609,6 +1639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1401370097}
+  - component: {fileID: 1401370098}
   m_Layer: 0
   m_Name: TurnManagementSystem
   m_TagString: Untagged
@@ -1631,6 +1662,18 @@ Transform:
   m_Father: {fileID: 664406213}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1401370098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401370096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3811ef3c40148419f4a794e8385312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1481548425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,6 +2777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1938583159}
+  - component: {fileID: 1938583160}
   m_Layer: 0
   m_Name: HandPresentationSystem
   m_TagString: Untagged
@@ -2756,6 +2800,18 @@ Transform:
   m_Father: {fileID: 664406213}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1938583160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938583158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9653f56967907d42abb3379571636d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1951206542
 GameObject:
   m_ObjectHideFlags: 0

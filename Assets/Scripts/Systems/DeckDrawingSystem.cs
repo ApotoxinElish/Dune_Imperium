@@ -5,10 +5,18 @@ namespace Dune
 {
     public class DeckDrawingSystem : MonoBehaviour
     {
+        public HandPresentationSystem HandPresentationSystem;
+
         private List<RuntimeCard> deck;
+        private List<RuntimeCard> discardPile;
+        private List<RuntimeCard> hand;
 
         private DeckWidget deckWidget;
         private DiscardPileWidget discardPileWidget;
+
+        private const int InitialDeckCapacity = 15;
+        private const int InitialDiscardPileCapacity = 15;
+        private const int InitialHandCapacity = 5;
 
         public void Initialize(DeckWidget deck, DiscardPileWidget discardPile)
         {
