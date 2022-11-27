@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5451185132399934037}
   - component: {fileID: 2402637298566861514}
   - component: {fileID: 5148772545293354032}
+  - component: {fileID: 5167248891954493880}
+  - component: {fileID: 3021624899439991511}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -123,3 +125,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.43417, y: 4.839536}
   m_EdgeRadius: 0
+--- !u!114 &5167248891954493880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776273054620808956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77df9e5415269db498097c87416ce4b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  costText: {fileID: 0}
+  nameText: {fileID: 0}
+  typeText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  picture: {fileID: 0}
+  glow: {fileID: 0}
+  inHandColor: {r: 0.039215688, g: 0.6392157, b: 0.94509804, a: 1}
+  aboutToBePlayedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  Template: {fileID: 0}
+--- !u!114 &3021624899439991511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776273054620808956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ee2d5651967ec4c954df3b5d536f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls: []

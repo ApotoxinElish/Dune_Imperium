@@ -131,5 +131,10 @@ namespace Dune
                     break;
             }
         }
+
+        public void SetInteractable(bool value)
+        {
+            interactable = value;
+        }
     }
 }
